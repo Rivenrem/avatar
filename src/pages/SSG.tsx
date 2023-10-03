@@ -1,19 +1,27 @@
-'use client';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useCallback, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import styles from '@/app/page.module.scss';
 import AddAvatar from '@/components/AddAvatar';
 import Avatar from '@/components/Avatar';
-import getNewAvatars from '@/helpers/getNewAvatars';
-import IAvatarResponse from '@/types/avatarResponse';
 import RefreshButton from '@/components/RefreshButton';
+import getNewAvatars from '@/helpers/getNewAvatars';
+import styles from '@/styles/SSG.module.scss';
+import IAvatarResponse from '@/types/avatarResponse';
 
-export default function Home() {
-  const [avatars, setAvatars] = useState<IAvatarResponse[]>([]);
+export async function getStaticProps() {
+  const avatarsProp = await getNewAvatars(5);
+
+  return {
+    props: {
+      avatarsProp,
+    },
+  };
+}
+
+export default function StaticSiteGenerationPage({ avatarsProp = [] }) {
+  const [avatars, setAvatars] = useState<IAvatarResponse[]>(avatarsProp);
   const [isAllRefreshing, setIsAllRefreshing] = useState(false);
   const [refreshingIndex, setRefreshingIndex] = useState<number | null>(null);
 
@@ -28,12 +36,14 @@ export default function Home() {
   const refreshAvatar = useCallback(
     async (avatarId: string) => {
       try {
-        const refreshingIndex = avatars.findIndex(({ id }) => id == avatarId);
+        const currentRefreshingIndex = avatars.findIndex(
+          ({ id }) => id == avatarId,
+        );
 
-        setRefreshingIndex(refreshingIndex);
+        setRefreshingIndex(currentRefreshingIndex);
 
         const newAvatars = [...avatars];
-        newAvatars[refreshingIndex] = (await getNewAvatars(1))[0];
+        newAvatars[currentRefreshingIndex] = (await getNewAvatars(1))[0];
 
         setAvatars(newAvatars);
       } catch (error) {

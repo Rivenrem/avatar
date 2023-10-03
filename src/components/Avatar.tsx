@@ -1,10 +1,11 @@
-import refreshButton from '@public/refresh.svg';
 import Image from 'next/image';
 import { memo } from 'react';
 
 import styles from '@/components/avatar.module.scss';
 import Loader from '@/components/Loader';
 import IAvatarResponse from '@/types/avatarResponse';
+
+import refreshButton from '../../public/refresh.svg';
 
 export default memo(function Avatar({
   avatar,

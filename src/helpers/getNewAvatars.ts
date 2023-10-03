@@ -1,5 +1,6 @@
-import constants from '@/constants';
 import { v4 as uuidv4 } from 'uuid';
+
+import constants from '@/constants';
 import IAvatarResponse from '@/types/avatarResponse';
 
 export default async function getNewAvatars(

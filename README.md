@@ -8,6 +8,17 @@ It can
 
 ## Run Locally
 
+Clone the project
+
+```bash
+  git clone git@github.com:qaprosoft/react-laba-international-2.git
+```
+
+Go to the project directory
+
+```bash
+  cd homeworks/lizaveta-kryvanosava/21-next-js-1
+```
 
 Install dependencies
 

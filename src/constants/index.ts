@@ -1,3 +1,5 @@
 const avatarURL = 'https://tinyfac.es/api/data?';
 
-export default { avatarURL };
+const constants = { avatarURL };
+
+export default constants;
