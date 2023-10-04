@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Link from 'next/link';
-import { ToastContainer } from 'react-toastify';
 
 import styles from '@/styles/Home.module.scss';
 
@@ -18,10 +17,10 @@ export default function Home() {
       </Head>
 
       <main className={`${styles.main} ${inter.className}`}>
-        <Link href="./SSR">Server Side Rendering Page</Link>
-        <Link href="./SSG">Static Site Generation Page</Link>
-
-        <ToastContainer />
+        <nav className={styles.main__navigation}>
+          <Link href="./SSR">Server Side Rendering Page</Link>
+          <Link href="./SSG">Static Site Generation Page</Link>
+        </nav>
       </main>
     </>
   );
