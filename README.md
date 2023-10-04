@@ -1,3 +1,7 @@
+# Deployment
+
+https://avatar-delta.vercel.app/
+
 # Avatar app
 
 It can
@@ -30,4 +34,11 @@ Run development server
 
 ```bash
   npm run dev
+```
+
+Or build it
+
+```bash
+  npm run build
+  npm start
 ```
